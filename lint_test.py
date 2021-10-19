@@ -1,6 +1,6 @@
 import sys
 from pylint import lint
-THRESHOLD = 8
+THRESHOLD = 10
 run = lint.Run(["factorial.py"], do_exit=False)
 score = run.linter.stats["global_note"]
 if score < THRESHOLD:
