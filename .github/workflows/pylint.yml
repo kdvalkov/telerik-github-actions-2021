@@ -5,7 +5,7 @@ on:
     branches: [ adding-actions ]
     paths:
     - 'factorial.py'
-    - 'lint.py'
+    - 'lint_test.py'
 
 jobs:
   build:
