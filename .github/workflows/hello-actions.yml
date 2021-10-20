@@ -1,0 +1,8 @@
+name: learn-github-actions
+on: [push]
+jobs: 
+  hello-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "This is our firs Github Workflow!"
