@@ -22,8 +22,7 @@ jobs:
     - name: Build container
       run: |
         echo "Building a container image..."
-        sleep 30
-											  
+        sleep 30											  
     - name: Deploy to cluster
       run: |
         echo "Deploying to cluster..."
