@@ -1,0 +1,31 @@
+name: deployment-of-python-app
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This has been triggered on ${{ github.event_name }} event"
+      - run: echo "this job is running on ${{ runner.os }} server hosted on github!"
+      - name: "checkout repo code"
+        uses: actions/checkout@v2
+      - name: "set up python 3.9"
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: "install dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          pip install pylint
+      - name: "lint with python"
+        run: |
+          python list_test.py
+      - name: "build container"
+        run: |
+          echo "building container image"
+          sleep 30
+      - name: "deploy to cluster"
+        run: |
+          echo "deploying to cluster..."
+          sleep 30
+          echo "container has been deployed"
+      - run: echo "this job's status is ${{ job.status }}."
