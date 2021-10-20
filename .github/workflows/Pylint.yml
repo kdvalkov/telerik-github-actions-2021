@@ -1,10 +1,19 @@
-name: build python app
+name: build-python-app
 on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - run: "python –m pip install –upgrade pip"
-      - run: "pip install pylint"
+      - run: echo "this has been triggered ${{ github.event_name }} event"
+      - name: "Checkout repository code"
+        uses: actions/checkout@v2
+      - name: Set up Python 3.9 
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+            python –m pip install –-upgrade pip 
+            pip install pylint
+      - name: Run lint with pylint
+        run: python lint_test.py
