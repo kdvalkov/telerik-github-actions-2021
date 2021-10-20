@@ -1,7 +1,7 @@
 name: build-python-app
 on: [push]
 jobs:
-  build:
+  build-on-push:
     runs-on: ubuntu-latest
     steps:
       - run: echo "this has been triggered ${{ github.event_name }} event"
