@@ -1,5 +1,10 @@
 name: Deployment-of-python-app
-on: [push]
+on: 
+  push:
+  branches: [ adding-actions ]
+    paths:
+    - 'factorial.py'
+    - 'lint_test.py'
 jobs:
   build:
     runs-on: ubuntu-latest
