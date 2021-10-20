@@ -18,7 +18,7 @@ jobs:
           pip install pylint
       - name: Lint with pylint
         run: |
-          python list_test.py
+          python lint_test.py
       - name: Build Container Image
         run: |
           echo "Building a container image..."
