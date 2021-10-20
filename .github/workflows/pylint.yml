@@ -3,6 +3,7 @@ on: [push]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    steps:
     - run: echo "this has been triggered ${{ github.event_name }} event "
     - run: echo " this job is running on ${{ runner.os}} server hosted on github"
     - name: Check out repository code
