@@ -1,5 +1,8 @@
 name: Deployment-of-python-app
-on: [push]
+on: 
+  pull_request:
+    paths_include:
+      - 'lint_test.py'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
