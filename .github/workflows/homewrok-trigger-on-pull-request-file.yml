@@ -2,7 +2,7 @@ name: trigger-on-pull-request
 on: 
   pull:
     paths: 
-    - "libre/testfile.txt"
+      - 'libre/testfile.txt'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
