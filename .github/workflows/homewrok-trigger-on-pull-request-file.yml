@@ -1,4 +1,4 @@
-name: trigger-on-pull-request
+name: trigger-on-pull-request-file
 on:
   pull_request:
     paths:
