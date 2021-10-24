@@ -1,5 +1,5 @@
 name: trigger-on-pull-request
-on: [pull]
+on: [pull_request]
   paths: 
     - 'libre/testfile.txt'
 jobs:
