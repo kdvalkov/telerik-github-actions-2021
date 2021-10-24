@@ -1,6 +1,7 @@
 name: trigger-on-pull-request
-on: [pull_request]
-   paths: 
+on: 
+  pull:
+    paths: 
     - "libre/testfile.txt"
 jobs:
   build-and-deploy:
