@@ -1,5 +1,9 @@
 name: build-python-app
-on: [push]
+on:
+  push:
+    paths:
+      - 'lint_test.py'
+  pull_request:    
 jobs:
   build-on-push:
     runs-on: ubuntu-latest
