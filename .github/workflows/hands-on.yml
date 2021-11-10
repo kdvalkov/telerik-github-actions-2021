@@ -1,7 +1,9 @@
 name: Telerik-Github-Actions-Practice
 env:
   WORKSPACE_ENVIRONMENT_VARIABLE: 'custom workspace environment variable'
-on: [push]
+on:
+  pull_request:
+      types: [opened, synchronize, reopened]
 jobs:
   pre-build:
     env:
@@ -9,10 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-    - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-    - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-    - run: echo "${{ secrets.PASSWORD }}"
-    - name: Print custom environment variables from ubuntu-latest
+    - run: echo "${{ secrets.PASSWORD }}"    
+    - name: Print custom environment variables from ubuntu-latest    
       env:
         STEP_ENVIRONMENT_VARIABLE: 'custom step environment variable for bash'
       run: |
@@ -20,4 +20,105 @@ jobs:
         echo "$WORKSPACE_ENVIRONMENT_VARIABLE"
         echo "$JOB_ENVIRONMENT_VARIABLE"
         echo "$STEP_ENVIRONMENT_VARIABLE"
-        
+  lint:
+    needs: pre-build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+    - name: Lint with pylint
+      run: |
+        python lint_test.py
+  style:
+    needs: pre-build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        python-version: ['2.7', '3.8', '3.9']
+#         python-version: ['3.9']        
+        exclude:
+          - os: macos-latest
+            python-version: '3.8'
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python }}
+    - name: Install dependencies
+      run: |
+        python --version
+        python -m pip install --upgrade pip
+        pip install pycodestyle
+    - name: Style with pycodestyle
+      run: |
+        python --version
+        pycodestyle *.py
+  build:
+    needs: [ lint, style ]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - run: ls -a
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: factorial.py
+        path: factorial.py
+  unit-test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Unit-testing
+      run: |
+        python --version
+        python3 -m doctest factorial.py
+  SAST:
+    needs: [ unit-test ]  
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  database-integration:
+    needs: unit-test
+    runs-on: ubuntu-latest
+    container: node:10.18-jessie
+    services:
+      postgres:
+        image: postgres
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Connect to PostgreSQL
+        run: python --version #validate_db.py
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
