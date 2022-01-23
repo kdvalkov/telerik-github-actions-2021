@@ -5,5 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo "This is our first Github Workflow!"
-      - run: ip addr show
+      - run: echo "This is our first Github Workflow!
+      - run: traceroute dir.bg
