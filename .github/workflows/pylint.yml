@@ -1,11 +1,13 @@
-name: Deployment-of-python-app
+name: Github-Actions-Style-Linter-UnitTest
+
 on: [push]
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "this has been triggered ${{ github.event_name }} event"
-    - run: echo "This job is running on ${{ runner.os }} server hosted on github!"
+    - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+    - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+    - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
     - name: Check out repository code
       uses: actions/checkout@v2
     - name: Set up Python 3.9
@@ -16,16 +18,17 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pylint
+        pip install pycodestyle
     - name: Lint with pylint
       run: |
         python lint_test.py
+    - name: Style with pycodestyle
+      run: |
+        pycodestyle *.py
+    - name: Unit testing
+      run: |
+        python3 -m doctest factorial.py
     - name: Build container
-      run: |
-        echo "Building a container image..."
-        sleep 5
-    - name: Deploy to cluster
-      run: |
-        echo "Deploying to cluster..."
-        sleep 5
-        echo "Container has been deployed!"
-    - run: echo "This job's status is ${{ job.status }}."
+      run: echo "Building container iamge"
+    - name: Deploy
+      run: echo "Deploying to cluster"
