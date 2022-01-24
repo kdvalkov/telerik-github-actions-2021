@@ -29,7 +29,21 @@ jobs:
     - name: Build image
       run: docker build -t $DOCKER_HUB_REPO:$(date '+%Y-%m-%d')-${GITHUB_SHA:0:8} .
 
-    - name: Push to Docker repository
-      run: |
-        docker login --username dockonstantinakk --password ${{ secrets.DOCKER_HUB_PASSWORD }}
-        docker image push --all-tags $DOCKER_HUB_REPO
+    - name: Docker Login
+      uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      with:
+        username: ${{ secrets.DOCKER_HUB_USER }}
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+    - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: my-docker-hub-namespace/my-docker-hub-repository
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
