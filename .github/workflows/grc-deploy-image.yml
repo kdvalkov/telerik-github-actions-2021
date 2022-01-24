@@ -13,4 +13,5 @@ jobs:
       uses: google-github-actions/setup-gcloud@v0
     - name: setup Google Deploy
       uses: google-github-actions/deploy-cloudrun@v0
-    #  run: gcloud info
+    - name: test the google cloud suite
+      run: gcloud info
