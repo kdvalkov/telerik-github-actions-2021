@@ -1,9 +1,8 @@
 name: GRC Cloud deploy image
 
 on: [push]
-  branch: [main]
 jobs:
-  init-auth:
+  google:
     name: Authenticate to Google Cloud
     runs-on: ubuntu-latest
     steps:
