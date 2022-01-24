@@ -1,7 +1,7 @@
 name: GRC Cloud deploy image
 
 on: [push]
-  branch: main
+  branch: [main]
 jobs:
   init-auth:
     name: Authenticate to Google Cloud
