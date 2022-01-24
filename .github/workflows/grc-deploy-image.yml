@@ -1,10 +1,10 @@
 name: GRC Cloud deploy image
 
-job:
-  job_id:
-   runs-on: ubuntu-latest
+jobs:
+  auth:
+    name: Authenticate to Google Cloud
+    runs-on: ubuntu-latest
     steps:
-    - id: 'auth'
       uses: 'google-github-actions/auth@v0'
       with:
         credentials_json: '${{ secrets.GCP_SA_KEY }}'
