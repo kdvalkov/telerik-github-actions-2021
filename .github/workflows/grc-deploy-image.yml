@@ -9,12 +9,8 @@ jobs:
     - uses: google-github-actions/auth@v0
       with:
         credentials_json: ${{ secrets.GCP_SA_KEY }}
-
-  ggl-sdk:
-  - name: setup Google Cloud
+  - name: Setup Google Cloud
       uses: google-github-actions/setup-gcloud@v0
-
-  check-toolkit:
   - name: setup Google Deploy
       uses: google-github-actions/deploy-cloudrun@v0
       run: gcloud info
