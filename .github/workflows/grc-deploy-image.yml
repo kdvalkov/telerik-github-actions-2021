@@ -9,6 +9,9 @@ jobs:
       uses: google-github-actions/auth@v0
       with:
         credentials_json: ${{ secrets.GCP_SA_KEY }}
+  
+    name: setup Google Cloud
+      uses: google-github-actions/setup-gcloud@v0
 
-    name: Use gcloud CLI
-      run: gcloud info
+    name: setup Google Deploy
+      uses: google-github-actions/deploy-cloudrun@v0
