@@ -3,18 +3,14 @@ name: Build Docker Image
 env:
   DOCKER_HUB_REPO: dockkonstantinakk/ta-devops-exam-demo
 
-on:
-  push:
-    branches:
-      - master
-
+on: [push]
 jobs:
   test:
     name: Test app runs on python
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.9
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
