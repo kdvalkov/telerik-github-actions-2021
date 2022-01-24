@@ -1,3 +1,6 @@
+name: GRC Cloud deploy image
+
+on: [push]
 jobs:
   job_id:
     steps:
