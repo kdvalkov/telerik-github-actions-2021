@@ -3,7 +3,7 @@ name: GRC Cloud deploy image
 on: [push]
 jobs:
   test:
-  - name: Authenticate to Google Cloud
+    name: Authenticate to Google Cloud
     runs-on: ubuntu-latest
     steps:
     - uses: google-github-actions/auth@v0
