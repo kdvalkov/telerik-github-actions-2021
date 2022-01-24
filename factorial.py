@@ -42,7 +42,7 @@ def sum_factorial():
     print("Final SUM = {}".format(result))
     return result
 
-    
+
 print(">>>>> checkout my new feature No 1 <<<<<")
 
 if __name__ == "__main__":
