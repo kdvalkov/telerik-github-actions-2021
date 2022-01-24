@@ -11,7 +11,7 @@ jobs:
           python-version: 3.9
       - name: create requirements.txt
     #prepare python related executables and environment
-         run: pipenv install
+        run: pipenv install
         #run: pip freeze > requirements.txt
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
