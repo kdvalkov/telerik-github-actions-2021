@@ -12,8 +12,8 @@ jobs:
       - name: create requirements.txt
     #prepare python related executables and environment
         run: |
-        pip install pipenv
-        pipenv install
+          pip install pipenv
+          pipenv install
         #run: pip freeze > requirements.txt
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
