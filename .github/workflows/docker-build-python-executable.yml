@@ -18,7 +18,7 @@ jobs:
     #prepare python related executables and environment
       run: |
         python -m pip install --upgrade pip
-        ./factorial.py
+        python factorial.py
 
   build:
     name: Build and publish Docker image
