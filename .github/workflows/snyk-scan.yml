@@ -1,10 +1,10 @@
-name: Example workflow for Python using Snyk
+name: Snyk Python Code Scan
 on: push
 jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
         env:
