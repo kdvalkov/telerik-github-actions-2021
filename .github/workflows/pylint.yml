@@ -23,7 +23,7 @@ jobs:
     #lint check
     #  run: |
         python lint_test.py
-    #- name: Style with pycodestyle
+    - name: Style with pycodestyle
     #style check
       run: |
         pycodestyle *.py
