@@ -18,7 +18,8 @@ jobs:
     #prepare python related executables and environment
       run: |
         python -m pip install --upgrade pip
-        python factorial.py
+        pip install -U Flask
+        pip install gunicorn
 
   build:
     name: Build and publish Docker image
