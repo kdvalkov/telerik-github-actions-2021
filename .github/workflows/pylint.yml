@@ -1,6 +1,6 @@
-name: Github-Actions-Style-Linter-UnitTest
+name: Python-Style-Linter-UnitTest
 
-on: [push]
+on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
