@@ -3,7 +3,7 @@ name: Build Docker Image
 env:
   DOCKER_HUB_REPO: dockkonstantinakk/ta-devops-exam-demo
 
-on: [push]
+on: workflow_dispatch
 jobs:
   test:
     name: Test app runs on python
