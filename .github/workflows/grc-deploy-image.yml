@@ -6,6 +6,7 @@ jobs:
     name: Authenticate to Google Cloud
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - uses: google-github-actions/auth@v0
       with:
         credentials_json: ${{ secrets.GCP_SA_KEY }}
@@ -15,7 +16,7 @@ jobs:
       uses: google-github-actions/deploy-cloudrun@v0
       with:
         service: ${{ env.SERVICE }}
-        image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}
+        image: gcr.io/${{ env.GCP_PROJECT }}/${{ env.SERVICE }}
         region: ${{ env.REGION }}
         env_vars: NAME="TA-Devops-Demo"
     #- name: test the google cloud suite
