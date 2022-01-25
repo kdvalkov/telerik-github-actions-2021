@@ -19,19 +19,14 @@ jobs:
     - uses: google-github-actions/auth@v0
       with:
         credentials_json: ${{ secrets.GCP_SA_KEY }}
-    - name: Setup Google Cloud
-      uses: google-github-actions/setup-gcloud@v0
-      with:
-        project_id: ${{ secrets.gcp_project }}
-        credentials_json: ${{ secrets.GCP_SA_KEY }}
-        export_default_credentials: true
-        run: docker pull dockkonstantinakk/ta-devops-exam-demo:main
+    #- name: Setup Google Cloud
+    #  uses: google-github-actions/setup-gcloud@v0
     - name: setup Google Deploy
       uses: google-github-actions/deploy-cloudrun@v0
       with:
         service: telerik-github-actions-2021
         image: gcr.io/${{ env.GCP_PROJECT }}/${{ env.SERVICE }}
         region: ${{ env.REGION }}
-        env_vars: NAME="TA-Devops-Demo"
+        env_vars: NAME="telerik-github-actions-2021"
     #- name: test the google cloud suite
     #  run: gcloud info
