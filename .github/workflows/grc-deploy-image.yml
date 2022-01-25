@@ -21,6 +21,11 @@ jobs:
         credentials_json: ${{ secrets.GCP_SA_KEY }}
     - name: Setup Google Cloud
       uses: google-github-actions/setup-gcloud@v0
+      with:
+        project_id: ${{ secrets.gcp_project }}
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+        export_default_credentials: true
+        run: docker pull dockkonstantinakk/ta-devops-exam-demo:main
     - name: setup Google Deploy
       uses: google-github-actions/deploy-cloudrun@v0
       with:
