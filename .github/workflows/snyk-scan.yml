@@ -9,12 +9,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-    #  - name: create requirements.txt
-    #prepare python related executables and environment
-      #  run: |
-        #  pip install pipenv
-        #  pipenv install
-        #  pip freeze > requirements.txt
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
         env:
