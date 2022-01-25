@@ -28,11 +28,6 @@ jobs:
     #style check
       run: |
         pycodestyle *.py
-   # - name: Unit testing
+    - name: Unit testing
     #run a trivial unit test
-   #   run: |
-   #     python3 -m doctest factorial.py
-    - name: Build container
-      run: echo "Building container image"
-    - name: Deploy
-      run: echo "Deploying to cluster"
+      run: python3 -m doctest *.py
