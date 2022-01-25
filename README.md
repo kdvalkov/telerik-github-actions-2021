@@ -1,9 +1,14 @@
 # telerik-github-actions-2021
 A repository created for practicing Github Actions  
-Feel free to fork this repository and work in the forked version.
 
-Credits to Tom Reid for the Python Code.
+This is a sample python application that demonstrated CI/CD principles.
 
-Test
+Main demonstratable objectives:
 
-Change to force githb action
+1. Application path to production diagram
+2. Value stream map
+3. Application linter and style check
+4. application security scan
+5. building stage
+6. upload built app container to docker registry for backup/reference
+7. upload built app container to Google Cloud platform
