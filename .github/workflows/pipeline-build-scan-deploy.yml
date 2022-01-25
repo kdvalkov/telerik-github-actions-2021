@@ -8,6 +8,7 @@ on: workflow_dispatch
 #    types: [opened, reopened]
 jobs:
   test:
+    name: Test code for style, lint and security
     runs-on: ubuntu-latest
     steps:
     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -39,7 +40,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   build:
     needs: test
-    name: Build and publish Docker image
+    name: Build and publish image to Docker registry
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -66,7 +67,7 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
   deploy:
     needs: build
-    name: Authenticate to Google Cloud
+    name: Deploy image to Google Cloud
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
