@@ -29,7 +29,7 @@ jobs:
     - name: setup Google Deploy
       uses: google-github-actions/deploy-cloudrun@v0
       with:
-        service: ${{ env.SERVICE }}
+        service: TA-Demo
         image: gcr.io/${{ env.GCP_PROJECT }}/${{ env.SERVICE }}
         region: ${{ env.REGION }}
         env_vars: NAME="TA-Devops-Demo"
