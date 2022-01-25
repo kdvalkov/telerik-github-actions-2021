@@ -1,6 +1,6 @@
 name: GRC Cloud deploy image
 
-on: [push]
+on: workflow_dispatch
 jobs:
   test:
     name: Authenticate to Google Cloud
