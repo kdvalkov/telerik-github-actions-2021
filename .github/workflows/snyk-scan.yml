@@ -1,26 +1,24 @@
 name: Snyk Python Code Scan
-on: [schedule, workflow_dispatch]
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '30 18 * * *'  
-jobs:
-  security:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-    #  - name: create requirements.txt
-    #prepare python related executables and environment
-      #  run: |
-        #  pip install pipenv
-        #  pipenv install
-        #  pip freeze > requirements.txt
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/python@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        #with:
-         #args: --package-manager=pip
+on:
+  workflow_dispatch:
+    jobs:
+      security:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - name: Set up Python 3.9
+            uses: actions/setup-python@v2
+            with:
+              python-version: 3.9
+        #  - name: create requirements.txt
+        #prepare python related executables and environment
+          #  run: |
+            #  pip install pipenv
+            #  pipenv install
+            #  pip freeze > requirements.txt
+          - name: Run Snyk to check for vulnerabilities
+            uses: snyk/actions/python@master
+            env:
+              SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+            #with:
+            #args: --package-manager=pip
