@@ -22,7 +22,7 @@ jobs:
     #- name: Lint with pylint
     #lint check
     #  run: |
-        python lint_test.py
+    #    python lint_test.py
     - name: Style with pycodestyle
     #style check
       run: |
