@@ -24,8 +24,8 @@ jobs:
     - name: setup Google Deploy
       uses: google-github-actions/deploy-cloudrun@v0
       with:
-        service: telerik-github-actions-2021
-        image: gcr.io/${{ env.GCP_PROJECT }}/${{ env.SERVICE }}
+        service: ta-devops-exam-demo
+        image: gcr.io/${{ env.GCP_PROJECT }}/ta-devops-exam-demo
         region: ${{ env.REGION }}
         env_vars: NAME="telerik-github-actions-2021"
     #- name: test the google cloud suite
