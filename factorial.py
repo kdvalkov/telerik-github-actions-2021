@@ -43,7 +43,5 @@ def sum_factorial():
     return result
 
 
-print(">>>>> checkout my new feature No 1 <<<<<")
-
 if __name__ == "__main__":
     sum_factorial()
