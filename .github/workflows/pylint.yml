@@ -19,14 +19,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install pylint
         pip install pycodestyle
-    #- name: Lint with pylint
+    - name: Lint with pylint
     #lint check
-    #  run: |
-    #    python lint_test.py
+      run: |
+        python lint_test.py
     - name: Style with pycodestyle
     #style check
       run: |
-        pycodestyle *.py
-    - name: Unit testing
-    #run a trivial unit test
-      run: python3 -m doctest *.py
+        pycodestyle python-app.py
