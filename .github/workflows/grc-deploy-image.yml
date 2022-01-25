@@ -22,7 +22,7 @@ jobs:
     - name: setup Google Deploy
       uses: google-github-actions/deploy-cloudrun@v0
       with:
-        credentials_json: ${{ secrets.GCP_SA_KEY }}
+        no_traffic:
         service: ta-devops-exam-demo
         image: gcr.io/${{ env.GCP_PROJECT }}/ta-devops-exam-demo
         region: ${{ env.REGION }}
