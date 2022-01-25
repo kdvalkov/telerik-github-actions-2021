@@ -1,9 +1,9 @@
 name: Snyk Python Code Scan
-#on:
-#  schedule:
+on:
+  schedule:
     # * is a special character in YAML so you have to quote this string
-#    - cron:  '30 18 * * *'
-on: workflow_dispatch    
+    - cron:  '30 18 * * *'
+on: workflow_dispatch   
 jobs:
   security:
     runs-on: ubuntu-latest
