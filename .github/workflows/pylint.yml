@@ -15,16 +15,15 @@ jobs:
       with:
         python-version: 3.9
     - name: Install dependencies
-    #prepare python related executables and environment
       run: |
         python -m pip install --upgrade pip
         pip install pylint
         pip install pycodestyle
-    - name: Lint with pylint
+    #- name: Lint with pylint
     #lint check
-      run: |
+    #  run: |
         python lint_test.py
-    - name: Style with pycodestyle
+    #- name: Style with pycodestyle
     #style check
       run: |
         pycodestyle *.py
