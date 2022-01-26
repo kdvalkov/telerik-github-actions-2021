@@ -1,7 +1,7 @@
 # telerik-github-actions-2021
 A repository created for practicing Github Actions  
 
-This is a sample python application that demonstrated CI/CD principles.
+This is a sample python application that demonstrates CI/CD principles built on Github Actions, DockerHub and Google Cloud Platform.
 
 Main demonstratable objectives:
 
