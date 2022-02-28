@@ -21,4 +21,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8080
 #open listening port
 
-CMD CMD [ "python3", "./python-app.py" ]
+CMD [ "python3", "./python-app.py" ]
