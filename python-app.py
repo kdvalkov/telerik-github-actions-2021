@@ -4,8 +4,6 @@ from flask import Flask
 
 app = Flask(__name__)
 
-print("FEATURE 1")
-
 @app.route("/")
 def hello_world():
     name = os.environ.get("NAME", "World")
