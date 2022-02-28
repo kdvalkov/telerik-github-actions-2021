@@ -1,0 +1,26 @@
+name: GRC Cloud deploy image
+
+on: workflow_dispatch
+jobs:
+  test:
+    name: Authenticate to Google Cloud
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+##### Google Cloud Authentication
+    - uses: google-github-actions/auth@v0
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+    - name: setup Google Deploy
+      uses: google-github-actions/deploy-cloudrun@v0
+      with:
+        service: ta-devops-exam-demo
+        image: gcr.io/${{ env.GCP_PROJECT }}/ta-devops-exam-demo
+        region: ${{ env.REGION }}
+        env_vars: NAME="telerik-github-actions-2021"
+    #- name: test the google cloud suite
+    #  run: gcloud info
