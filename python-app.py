@@ -16,6 +16,7 @@ def hello_world():
 def feature_1():
     return '<h1>Feature 1 deployed!</h1>'
 
+
 @app.route('/feature_2')
 def feature_2():
     return '<h1>Feature 2 deployed!</h1>'
