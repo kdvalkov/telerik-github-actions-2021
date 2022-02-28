@@ -4,9 +4,9 @@ env:
   DOCKER_HUB_REPO: dockkonstantinakk/ta-devops-exam-demo
 
 on:
-  push:
-  #pull_request:
-  #  types: [opened, reopened]
+  #push:
+  pull_request:
+    types: [opened, reopened]
 jobs:
   test:
     name: Test code for style, lint and security
@@ -85,5 +85,5 @@ jobs:
       with:
         service: ta-devops-exam-demo
         image: gcr.io/${{ env.GCP_PROJECT }}/ta-devops-exam-demo
-        region: ${{ env.REGION }}
+        region: europe-central2-a
         env_vars: NAME="telerik-github-actions-2021"
