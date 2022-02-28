@@ -87,3 +87,4 @@ jobs:
         image: gcr.io/${{ env.GCP_PROJECT }}/ta-devops-exam-demo
         region: europe-central2-a
         env_vars: NAME="telerik-github-actions-2021"
+        
