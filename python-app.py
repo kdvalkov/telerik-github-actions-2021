@@ -16,6 +16,10 @@ def hello_world():
 def feature_1():
     return '<h1>Feature 1 deployed!</h1>'
 
+@app.route('/feature_2')
+def feature_2():
+    return '<h1>Feature 2 deployed!</h1>'
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int("8080"), debug=True)
