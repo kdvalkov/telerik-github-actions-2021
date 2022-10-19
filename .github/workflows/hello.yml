@@ -1,1 +1,8 @@
 name: learn-github-actions
+on: [push]
+jobs:
+  build:
+    runs-on: ubunto-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "This job is automatically triggered by a ${{ github.event_name }} event."
