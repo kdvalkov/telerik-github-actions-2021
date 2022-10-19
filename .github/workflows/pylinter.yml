@@ -3,9 +3,6 @@ name: Github-action-practice
 on:
   push:
     branches: [ our-first-pipeline ]
-    paths:
-    - 'factorial.py'
-    - 'lint_test.py'
     
 jobs:
   integration-test:
