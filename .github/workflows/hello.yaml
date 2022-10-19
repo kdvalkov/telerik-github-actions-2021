@@ -1,0 +1,10 @@
+name: github-actions-demo
+on: [push]
+jobs:
+  builds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "This job is triggered by ${{ github.event_name }}"
+      - run: pwd
+      - run: ls -la 
