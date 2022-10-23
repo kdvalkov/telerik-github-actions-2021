@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: echo "This is workflow is for the ${{ github.ref_name }}"
       - run: echo "This is job named ${{ github.job }}" 
       - run: echo "This job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "This job was automatically triggered on the ${{ github.repository }}"
