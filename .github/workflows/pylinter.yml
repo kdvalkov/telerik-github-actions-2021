@@ -17,8 +17,6 @@ jobs:
       run: echo "This is job named ${{ github.job }}"
     - name: Event Name
       run: echo "This job was automatically triggered by a ${{ github.event_name }} event."
-    - name: Branch and Repository
-      run: echo "This job is triggered on branch ${{ github.ref }} from ${{ github.repository }} repository"
     - name: Run Attempt
       run: echo "This is attempt number ${{ github.run_attempt }}"
     - name: Check out reporistory code
