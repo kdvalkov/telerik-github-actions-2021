@@ -9,17 +9,20 @@ on:
     
 jobs:
   lint:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-    - name: Get some info 
+    - name: Operating system
       run: echo "This job is now running on ${{ runner.os }} server hosted by GitHub"
-      run: echo "This is job named ${{ github.job }}" 
+    - name: Job Name
+      run: echo "This is job named ${{ github.job }}"
+    - name: Event Name
       run: echo "This job was automatically triggered by a ${{ github.event_name }} event."
+    - name: Branch and Repository
       run: echo "This job is triggered on branch ${{ github.ref }} from ${{ github.repository }} repository"
+    - name: Run Attempt
       run: echo "This is attempt number ${{ github.run_attempt }}"
     - name: Check out reporistory code
       uses: actions/checkout@v2
-      run: echo "The ${{ github.repository }} has been cloned to the runner."
     - name: Setup Python
     - uses: action/setup-python@v2
       with:
