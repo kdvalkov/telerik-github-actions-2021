@@ -2,7 +2,7 @@ name: Github-action-practice
 
 on:
   push:
-    branches: [ our-first-pipeline ]
+    branches: [ main ]
     
 jobs:
   integration-test:
@@ -39,13 +39,11 @@ jobs:
     - name: Build container
       run: |
         echo "Building docker container..."
-        sleep 60
+        sleep 5
         echo "Docker container built successfully"
     - name: Deploy
       run: |
         echo "Deploying to our imaginary cluster"
-        sleep 60
+        sleep 5
         echo "App has been deployed successfully"
     - run: echo "This job's status is ${{ job.status }}."
-        
-   

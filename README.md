@@ -1,4 +1,4 @@
-# telerik-github-actions-2021
+# telerik-github-actions-2022
 A repository created for practicing Github Actions  
 Feel free to fork this repository and work in the forked version.
 

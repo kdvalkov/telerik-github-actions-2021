@@ -5,6 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: echo "This is workflow is for the ${{ github.ref_name }} branch"
+      - run: echo "This is job named ${{ github.job }}" 
       - run: echo "This job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "This job was automatically triggered on the ${{ github.repository }}"
+      - run: echo "This is attempt number ${{ github.run_attempt }}"
       - run: pwd
       - run: ls -la
